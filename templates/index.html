@@ -1,0 +1,22 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+{#    <link rel="stylesheet" href="/static/css/base.css">#}
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+</head>
+<body>
+<h1>index</h1>
+{% if request.user.is_authenticated %}
+    <p>index</p>
+    <p>welcome {{ request.user }} login!</p>
+{% else %}
+    <p><a href="{% url 'login' %}">login</a></p>
+    <p><a href="{% url 'register' %}">register</a></p>
+    <p><a href="http://127.0.0.1:8000/admin">admin</a></p>
+{% endif %}
+
+</body>
+</html>
