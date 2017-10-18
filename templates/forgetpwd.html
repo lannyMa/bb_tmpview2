@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>正在找回密码</title>
+</head>
+<body>
+<form action="" method="post">
+    {% csrf_token %}
+    {{ forget_form }}
+    <input type="submit">
+</form>
+</body>
+</html>

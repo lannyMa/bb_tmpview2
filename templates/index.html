@@ -12,6 +12,7 @@
 {% if request.user.is_authenticated %}
     <p>index</p>
     <p>welcome {{ request.user }} login!</p>
+    <p><a href="{% url 'logout' %}">logout</a></p>
 {% else %}
     <p><a href="{% url 'login' %}">login</a></p>
     <p><a href="{% url 'register' %}">register</a></p>

@@ -16,13 +16,18 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from django.views.generic import TemplateView
+
 from users import views
 
-
 urlpatterns = [
-    url(r'^$', TemplateView.as_view(template_name="index.html"),name="index"),
-    url(r'^login/', views.LoginView.as_view(),name="login"),
-    url(r'^register/', views.RegisterView.as_view(),name="register"),
+    url(r'^$', TemplateView.as_view(template_name="index.html"), name="index"),
+    url(r'^login/', views.LoginView.as_view(), name="login"),
+    url(r'^logout/$', views.LogoutView.as_view(), name='logout'),
+    url(r'^register/', views.RegisterView.as_view(), name="register"),
     url(r'^captcha/', include('captcha.urls')),
+    url(r'^active/(?P<active_code>.*)/$', views.ActiveUserView.as_view(), name='user_active'),
     url(r'^admin/', admin.site.urls),
+    url(r'^forget/$', views.ForgetPwdView.as_view(), name='forget_pwd'),
+    url(r'^reset/(?P<active_code>.*)/$', views.ResetView.as_view(), name='reset_pwd'),
+    url(r'^modify_pwd/$', views.ModifyPwdView.as_view(), name='modify_pwd'),
 ]

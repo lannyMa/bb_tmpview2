@@ -5,10 +5,11 @@
     <title>register</title>
 </head>
 <body>
-<form action="">
-    <p>邮箱: <input type="text" name="username"></p>
-    <p>密码: <input type="text" name="password"></p>
-    <div class="captcha">验证码: {{ register_form.captcha }}</div>
+<form action="" method="post">
+    {% csrf_token %}
+    <p>邮箱: <input type="text" name="email">{{ register_form.errors.email }}</p>
+    <p>密码: <input type="text" name="password">{{ register_form.errors.password }}</p>
+    <div class="captcha">验证码: {{ register_form.captcha }}{{ register_form.errors.captcha }}</div>
     <p><input type="submit"></p>
 </form>
 </body>
